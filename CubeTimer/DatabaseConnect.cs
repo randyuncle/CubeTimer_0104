@@ -61,7 +61,14 @@ namespace CubeTimer
                 cmd.Parameters.Add("@Name",SqlDbType.NVarChar).Value = us.getUser();
 
                 SqlDataReader sdr = cmd.ExecuteReader();
-
+                if (!sdr.HasRows)
+                {
+                    sdr.Close();
+                    scn.Close();
+                    scn.Dispose();
+                    return false;
+                }
+                    
                 // Insert data to user statement
                 while (sdr.Read())
                 {
@@ -79,7 +86,6 @@ namespace CubeTimer
             catch (Exception ex)
             {
                 //MessageBox.Show("找不到使用者資料\r\n" + ex.Message, "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
             }
 
             return true;

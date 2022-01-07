@@ -98,7 +98,9 @@ namespace CubeTimer
         public bool NameRepeatCheck()
         {
             DatabaseConnect dbc = new DatabaseConnect();
-            return dbc.PickUserFromDatabase(accountBox.Text);
+            bool isSame = dbc.PickUserFromDatabase(accountBox.Text);
+
+            return isSame;
         }
     }
 }

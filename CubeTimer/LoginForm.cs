@@ -17,6 +17,7 @@ namespace CubeTimer
             InitializeComponent();
         }
 
+        UserStatement us = new UserStatement();
         /**
          * 登入
          */
@@ -78,8 +79,6 @@ namespace CubeTimer
          */
         public bool checkPassSame()
         {
-            UserStatement us = new UserStatement();
-
             if (!us.getPassword().Equals(passwordBox.Text))
             {
                 return false;
